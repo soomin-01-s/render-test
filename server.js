@@ -2,7 +2,12 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(express.static('public')); // HTML, CSS, JS 파일을 public 폴더에서 제공
+app.use(express.static('public'));
+
+// ✅ 새 라우트 추가
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello from backend API!' });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
